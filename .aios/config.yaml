@@ -1,0 +1,23 @@
+# AIOS Project Configuration
+version: 3.10.0
+project:
+  name: lumina-festival
+  type: greenfield
+  description: Luminous festival management system
+  created: 2026-01-30
+
+environment:
+  bootstrapped: true
+  bootstrap_date: 2026-01-30T21:45:00Z
+  os: Windows 10/11
+  node_version: v22.22.0
+
+workflow:
+  current: greenfield-fullstack
+  phase: phase-1-environment-setup
+
+settings:
+  auto_update_status: true
+  quality_gates_enabled: true
+  supabase_external: true
+  supabase_host: hostinger

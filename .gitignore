@@ -1,0 +1,54 @@
+# Dependências
+node_modules/
+.pnpm-store/
+*.lock
+yarn.lock
+pnpm-lock.yaml
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.local
+.env.*.local
+.env.production
+
+# IDE
+.idea/
+.vscode/
+.DS_Store
+*.swp
+*.swo
+*.sublime-workspace
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# AIOS
+.aios/project-status.yaml
+.aios/environment-report.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary
+tmp/
+temp/
+*.tmp
+.cache/
+
+# Backups
+*.bak
+*.backup
