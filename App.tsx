@@ -5,7 +5,7 @@
 */
 
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, lazy, Suspense } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
 import { Ticket, Globe, Zap, Music, MapPin, Menu, X, Calendar, Play, ChevronLeft, ChevronRight } from 'lucide-react';
 import FluidBackground from './components/FluidBackground';
@@ -13,7 +13,11 @@ import GradientText from './components/GlitchText';
 import CustomCursor from './components/CustomCursor';
 import ArtistCard from './components/ArtistCard';
 import { Artist } from './types';
-import AIChat from './components/AIChat';
+import { useWebVitals } from './src/hooks/useWebVitals';
+import { performanceMonitor } from './src/utils/performanceMonitor';
+
+// Lazy load AI Chat component for better performance
+const AIChat = lazy(() => import('./components/AIChat'));
 
 // Dummy Data Traduzido
 const LINEUP: Artist[] = [
@@ -73,9 +77,17 @@ const App: React.FC = () => {
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [selectedArtist, setSelectedArtist] = useState<Artist | null>(null);
-  
+
   const [purchasingIndex, setPurchasingIndex] = useState<number | null>(null);
   const [purchasedIndex, setPurchasedIndex] = useState<number | null>(null);
+
+  // Track Web Vitals for performance monitoring
+  useWebVitals((metric) => {
+    if (metric.rating !== 'good') {
+      console.warn(`${metric.name}: ${metric.value.toFixed(2)}ms (${metric.rating})`);
+    }
+    performanceMonitor.init();
+  });
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -127,7 +139,9 @@ const App: React.FC = () => {
     <div className="relative min-h-screen text-white selection:bg-[#4fb7b3] selection:text-black cursor-auto md:cursor-none overflow-x-hidden">
       <CustomCursor />
       <FluidBackground />
-      <AIChat />
+      <Suspense fallback={null}>
+        <AIChat />
+      </Suspense>
       
       {/* Navegação */}
       <nav className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-6 md:px-8 py-6 mix-blend-difference">
@@ -324,10 +338,14 @@ const App: React.FC = () => {
             <div className="lg:col-span-7 relative h-[400px] md:h-[700px] w-full order-1 lg:order-2">
               <div className="absolute inset-0 bg-gradient-to-br from-[#637ab9] to-[#4fb7b3] rounded-3xl rotate-3 opacity-30 blur-xl" />
               <div className="relative h-full w-full rounded-3xl overflow-hidden border border-white/10 group shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop" 
-                  alt="Crowd" 
-                  className="h-full w-full object-cover transition-transform duration-[1.5s] group-hover:scale-110 will-change-transform" 
+                <img
+                  src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop"
+                  alt="Crowd"
+                  width={1000}
+                  height={700}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover transition-transform duration-[1.5s] group-hover:scale-110 will-change-transform"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-80" />
                 
@@ -488,10 +506,14 @@ const App: React.FC = () => {
 
               <div className="w-full md:w-1/2 h-64 md:h-auto relative overflow-hidden">
                 <AnimatePresence mode="wait">
-                  <motion.img 
+                  <motion.img
                     key={selectedArtist.id}
-                    src={selectedArtist.image} 
-                    alt={selectedArtist.name} 
+                    src={selectedArtist.image}
+                    alt={selectedArtist.name}
+                    width={600}
+                    height={600}
+                    loading="eager"
+                    decoding="async"
                     initial={{ opacity: 0, scale: 1.1 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0 }}
