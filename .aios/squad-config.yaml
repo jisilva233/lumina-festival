@@ -1,0 +1,452 @@
+# Web Development Squad - AIOS Configuration
+# Configuração específica para integração de agentes com a squad
+
+version: 1.0.0
+squad_name: "Web Development Squad"
+squad_id: "web-dev-squad-001"
+created_at: "2026-02-04"
+
+# ============================================================================
+# SQUAD OVERVIEW
+# ============================================================================
+
+squad:
+  name: "Web Development Squad"
+  description: "Professional website and landing page development team"
+  size: "8 FTE"
+  roles: 8
+  productivity_gain: "40-50%"
+
+# ============================================================================
+# AGENT ACTIVATION SHORTCUTS
+# ============================================================================
+
+agent_shortcuts:
+  # Orquestração
+  master: "aios-master"          # Orchestrator
+
+  # Desenvolvimento
+  dev: "dev"                      # Developer
+  arch: "architect"               # Architect
+  qa: "qa"                        # QA
+  ops: "devops"                   # DevOps
+
+  # Gestão
+  pm: "pm"                        # Project Manager
+  po: "po"                        # Product Owner
+  sm: "sm"                        # Scrum Master
+
+  # Especialidades
+  ux: "ux-design-expert"         # Designer
+  data: "data-engineer"          # Data Engineer
+  analyst: "analyst"             # Analyst
+
+# ============================================================================
+# AGENT CONFIGURATIONS BY ROLE
+# ============================================================================
+
+role_configurations:
+  tech_lead:
+    name: "Tech Lead"
+    primary_agent: "architect"
+    secondary_agents: ["aios-master", "devops"]
+    commands:
+      quick:
+        - "*design-system"
+        - "*tech-decision"
+        - "*code-review"
+      full:
+        - "*design-system"
+        - "*tech-decision"
+        - "*review-design"
+        - "*scalability-check"
+        - "*code-review"
+        - "*architecture-audit"
+    responsibilities:
+      - "Decisões arquiteturais"
+      - "Code review e padrões"
+      - "Mentoria"
+      - "Planejamento estratégico"
+
+  senior_frontend:
+    name: "Senior Frontend Engineer"
+    primary_agent: "dev"
+    secondary_agents: ["architect"]
+    commands:
+      quick:
+        - "*create-feature"
+        - "*optimize-performance"
+        - "*write-tests"
+      full:
+        - "*create-feature"
+        - "*optimize-performance"
+        - "*write-tests"
+        - "*refactor-code"
+        - "*code-review"
+        - "*debug-issue"
+        - "*explain-code"
+    responsibilities:
+      - "Componentes complexos"
+      - "Performance optimization"
+      - "Arquitetura frontend"
+
+  mid_frontend:
+    name: "Mid Frontend Engineer"
+    primary_agent: "dev"
+    secondary_agents: ["architect"]
+    commands:
+      quick:
+        - "*create-feature"
+        - "*fix-bug"
+        - "*write-tests"
+      full:
+        - "*create-feature"
+        - "*fix-bug"
+        - "*write-tests"
+        - "*explain-code"
+        - "*learn-pattern"
+    responsibilities:
+      - "Componentes reutilizáveis"
+      - "Correção de bugs"
+      - "Aprendizado"
+
+  senior_backend:
+    name: "Senior Backend Engineer"
+    primary_agent: "dev"
+    secondary_agents: ["architect", "data-engineer"]
+    commands:
+      quick:
+        - "*design-api"
+        - "*optimize-query"
+        - "*generate-endpoint"
+      full:
+        - "*design-api"
+        - "*optimize-query"
+        - "*generate-endpoint"
+        - "*security-review"
+        - "*write-tests"
+        - "*debug-issue"
+    responsibilities:
+      - "APIs e endpoints"
+      - "Design de banco de dados"
+      - "Escalabilidade"
+      - "Segurança"
+
+  mid_backend:
+    name: "Mid Backend Engineer"
+    primary_agent: "dev"
+    secondary_agents: ["data-engineer"]
+    commands:
+      quick:
+        - "*generate-endpoint"
+        - "*fix-bug"
+        - "*write-tests"
+      full:
+        - "*generate-endpoint"
+        - "*fix-bug"
+        - "*write-tests"
+        - "*optimize-query"
+        - "*explain-code"
+        - "*learn-pattern"
+    responsibilities:
+      - "Implementação de endpoints"
+      - "Testes de integração"
+      - "Manutenção de BD"
+
+  qa_engineer:
+    name: "QA Engineer"
+    primary_agent: "qa"
+    secondary_agents: ["dev"]
+    commands:
+      quick:
+        - "*create-test-plan"
+        - "*generate-tests"
+        - "*quality-report"
+      full:
+        - "*create-test-plan"
+        - "*generate-tests"
+        - "*quality-report"
+        - "*accessibility-audit"
+        - "*performance-test"
+        - "*security-test"
+    responsibilities:
+      - "Planejamento de testes"
+      - "Testes automatizados"
+      - "Relatórios de qualidade"
+
+  designer:
+    name: "UI/UX Designer"
+    primary_agent: "ux-design-expert"
+    commands:
+      quick:
+        - "*design-component"
+        - "*accessibility-audit"
+        - "*design-system"
+      full:
+        - "*design-component"
+        - "*accessibility-audit"
+        - "*design-system"
+        - "*usability-test"
+        - "*research-pattern"
+    responsibilities:
+      - "Design visual"
+      - "Design System"
+      - "Pesquisa UX"
+
+  devops_engineer:
+    name: "DevOps Engineer (0.5 FTE)"
+    primary_agent: "devops"
+    secondary_agents: ["architect"]
+    commands:
+      quick:
+        - "*setup-cicd"
+        - "*deploy-setup"
+        - "*monitoring-setup"
+      full:
+        - "*setup-cicd"
+        - "*deploy-setup"
+        - "*monitoring-setup"
+        - "*security-audit"
+        - "*github-management"
+    responsibilities:
+      - "CI/CD pipelines"
+      - "Deploy e infraestrutura"
+      - "Monitoramento"
+
+# ============================================================================
+# AGENT COMMAND MAPPINGS
+# ============================================================================
+
+agent_commands:
+  dev:
+    feature_development:
+      - "*create-feature"
+      - "*implement-endpoint"
+      - "*add-component"
+    testing:
+      - "*write-tests"
+      - "*generate-tests"
+      - "*test-coverage"
+    optimization:
+      - "*optimize-performance"
+      - "*optimize-query"
+      - "*refactor-code"
+    debugging:
+      - "*debug-issue"
+      - "*trace-error"
+      - "*profile-performance"
+    review:
+      - "*code-review"
+      - "*suggest-improvements"
+    learning:
+      - "*explain-code"
+      - "*learn-pattern"
+      - "*best-practices"
+
+  architect:
+    design:
+      - "*design-system"
+      - "*design-api"
+      - "*database-design"
+    decisions:
+      - "*tech-decision"
+      - "*review-design"
+      - "*architecture-audit"
+    planning:
+      - "*scalability-check"
+      - "*performance-plan"
+      - "*security-plan"
+
+  qa:
+    planning:
+      - "*create-test-plan"
+      - "*identify-test-cases"
+      - "*edge-case-analysis"
+    automation:
+      - "*generate-tests"
+      - "*test-automation"
+      - "*setup-test-framework"
+    auditing:
+      - "*accessibility-audit"
+      - "*performance-test"
+      - "*security-test"
+    reporting:
+      - "*quality-report"
+      - "*coverage-report"
+      - "*bug-summary"
+
+  devops:
+    setup:
+      - "*setup-cicd"
+      - "*deploy-setup"
+      - "*monitoring-setup"
+    maintenance:
+      - "*update-dependencies"
+      - "*security-update"
+      - "*performance-tuning"
+    management:
+      - "*github-management"
+      - "*secret-management"
+      - "*access-control"
+
+  aios-master:
+    workflow:
+      - "*create-story"
+      - "*sprint-planning"
+      - "*sprint-review"
+    coordination:
+      - "*task"
+      - "*assign-task"
+      - "*status-report"
+    assistance:
+      - "*help"
+      - "*guide"
+      - "*next-steps"
+
+# ============================================================================
+# DAILY WORKFLOWS
+# ============================================================================
+
+workflows:
+  daily_standup:
+    frequency: "09:30 AM"
+    duration: "15 min"
+    facilitated_by: "sm"
+    agents_involved: ["aios-master"]
+    command: "*standup"
+
+  sprint_planning:
+    frequency: "Início de sprint"
+    duration: "2h"
+    facilitated_by: ["pm", "po"]
+    agents_involved: ["aios-master", "architect"]
+    commands:
+      - "*sprint-planning"
+      - "*create-story"
+
+  code_review:
+    frequency: "Contínuo"
+    target_turnaround: "4 horas"
+    facilitated_by: "architect"
+    agents_involved: ["dev", "architect"]
+    commands:
+      - "*code-review"
+      - "*suggest-improvements"
+
+  sprint_review:
+    frequency: "Fim de sprint"
+    duration: "1.5h"
+    facilitated_by: ["sm", "pm"]
+    agents_involved: ["pm"]
+    command: "*sprint-status"
+
+  retrospective:
+    frequency: "Após sprint review"
+    duration: "1h"
+    facilitated_by: "sm"
+    agents_involved: ["aios-master"]
+    command: "*retrospective"
+
+# ============================================================================
+# TEAM BUNDLE REFERENCE
+# ============================================================================
+
+team_bundle: "team-web-dev-squad.yaml"
+team_bundle_location: ".aios-core/agent-teams/team-web-dev-squad.yaml"
+
+# ============================================================================
+# INTEGRATION SETTINGS
+# ============================================================================
+
+integration:
+  documentation_root: "docs/squad-design"
+  documentation_files:
+    - "web-development-squad.md"
+    - "raci-matrix.md"
+    - "onboarding-guide.md"
+    - "team-handbook.md"
+    - "aios-integration.md"
+    - "aios-quick-start.md"
+    - "executive-summary.md"
+
+  git_integration:
+    commit_agent_co_author: "Sam (Squad Creator Agent) <noreply@synkra.ai>"
+    commit_prefixes:
+      - "feat:"
+      - "fix:"
+      - "test:"
+      - "docs:"
+      - "refactor:"
+      - "perf:"
+      - "chore:"
+
+  metrics_tracking:
+    enabled: true
+    track_agent_usage: true
+    track_productivity_gains: true
+    track_quality_metrics: true
+
+# ============================================================================
+# PRODUCTIVITY BASELINES
+# ============================================================================
+
+productivity:
+  baseline:
+    feature_days: 3
+    test_days: 1
+    review_hours: 4
+    optimization_days: 2
+
+  with_agents:
+    feature_days: 1.5
+    test_days: 0.33
+    review_hours: 1
+    optimization_days: 0.5
+
+  gains:
+    feature_development: "50%"
+    testing: "67%"
+    code_review: "75%"
+    optimization: "75%"
+    overall: "40-50%"
+
+  estimated_fte_equivalent: 4
+
+# ============================================================================
+# ACTIVATION INSTRUCTIONS
+# ============================================================================
+
+quick_start:
+  step_1: "Open terminal"
+  step_2: "cd project-directory"
+  step_3: "claude code"
+  step_4: "Choose agent: @dev, @architect, @qa, @devops, etc."
+  step_5: "View commands: *help"
+  step_6: "Execute: *create-feature, *fix-bug, etc."
+
+default_commands:
+  help: "*help                    # Ver todos os comandos"
+  guide: "*guide                  # Guia completo do agente"
+  quick: "*quick-commands         # Comandos mais usados"
+  exit: "*exit                    # Sair do agente"
+
+# ============================================================================
+# MAINTENANCE & UPDATES
+# ============================================================================
+
+maintenance:
+  version: "1.0.0"
+  created_at: "2026-02-04"
+  last_updated: "2026-02-04"
+  next_review: "2026-03-04"
+  maintained_by: "Tech Lead + @aios-master"
+  status: "Active"
+
+  changelog:
+    - version: "1.0.0"
+      date: "2026-02-04"
+      changes:
+        - "Initial squad configuration"
+        - "Agent role mappings defined"
+        - "Team bundle created"
+        - "Quick start guide added"

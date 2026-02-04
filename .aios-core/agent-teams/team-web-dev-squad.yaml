@@ -1,0 +1,282 @@
+# Web Development Squad - Team Bundle
+# Agentes AIOS configurados para squad de desenvolvimento de sites e landing pages
+
+bundle:
+  name: Web Development Squad
+  icon: 🌐
+  version: 1.0.0
+  description: |
+    Complete team configuration for professional website and landing page development.
+    Combines human squad roles with AI agents for maximum productivity.
+
+  use_case: |
+    - Build professional websites and landing pages
+    - E-commerce platforms
+    - SaaS applications
+    - Corporate sites
+
+  squad_size: 8 FTE
+  estimated_productivity_gain: "40-50%"
+
+# Agentes principais (em ordem de uso)
+agents:
+  # Orquestração
+  - aios-master
+
+  # Desenvolvimento
+  - dev              # @dev - Implementação de código
+  - architect        # @architect - Decisões arquiteturais
+  - qa               # @qa - Testes e qualidade
+  - devops           # @devops - CI/CD e infraestrutura
+
+  # Gestão
+  - pm               # @pm - Project Manager
+  - po               # @po - Product Owner
+  - sm               # @sm - Scrum Master
+
+  # Design e Dados
+  - ux-design-expert # @ux-design-expert - UI/UX
+  - analyst          # @analyst - Métricas e insights
+  - data-engineer    # @data-engineer - Pipelines de dados
+
+# Workflows recomendados para a squad
+workflows:
+  - greenfield-fullstack.yaml
+  - brownfield-fullstack.yaml
+
+# Configurações específicas da squad
+squad_config:
+  # Tech Lead da squad
+  tech_lead:
+    role: "Tech Lead / Arquiteto"
+    primary_agent: "@architect"
+    secondary_agents: ["@aios-master", "@devops"]
+    responsibilities:
+      - Decisões arquiteturais
+      - Code review e padrões
+      - Mentoria do time
+      - Planejamento estratégico
+
+  # Frontend Team
+  frontend_team:
+    roles:
+      - name: "Senior Frontend Engineer"
+        primary_agent: "@dev"
+        secondary_agents: ["@architect"]
+        focus: "React/Next.js, componentes complexos"
+      - name: "Mid Frontend Engineer"
+        primary_agent: "@dev"
+        secondary_agents: ["@architect"]
+        focus: "Componentes reutilizáveis, bugs"
+
+  # Backend Team
+  backend_team:
+    roles:
+      - name: "Senior Backend Engineer"
+        primary_agent: "@dev"
+        secondary_agents: ["@architect", "@data-engineer"]
+        focus: "APIs, database design, escalabilidade"
+      - name: "Mid Backend Engineer"
+        primary_agent: "@dev"
+        secondary_agents: ["@data-engineer"]
+        focus: "Endpoints, migrations, manutenção"
+
+  # QA Team
+  qa_team:
+    roles:
+      - name: "QA Engineer"
+        primary_agent: "@qa"
+        secondary_agents: ["@dev"]
+        focus: "Testes, automação, relatórios"
+
+  # Design Team
+  design_team:
+    roles:
+      - name: "UI/UX Designer"
+        primary_agent: "@ux-design-expert"
+        focus: "Design, acessibilidade, design system"
+
+  # DevOps (Part-time)
+  devops_team:
+    roles:
+      - name: "DevOps Engineer (0.5 FTE)"
+        primary_agent: "@devops"
+        secondary_agents: ["@architect"]
+        focus: "CI/CD, deploy, monitoring, segurança"
+
+  # Gestão
+  management_team:
+    project_manager:
+      agent: "@pm"
+      focus: "Planejamento, execução, cronograma"
+    product_owner:
+      agent: "@po"
+      focus: "Requisitos, priorização, aceitação"
+    scrum_master:
+      agent: "@sm"
+      focus: "Cerimônias, removal de bloqueios"
+    analyst:
+      agent: "@analyst"
+      focus: "Métricas, insights, dashboards"
+
+# Stack tecnológico
+tech_stack:
+  frontend:
+    framework: "Next.js 14+"
+    language: "TypeScript"
+    styling: "Tailwind CSS"
+    state_management: "Zustand / Redux Toolkit"
+    testing: "Jest + React Testing Library + Playwright"
+    deployment: "Vercel"
+
+  backend:
+    runtime: "Node.js 20+"
+    framework: "Nest.js / Express.js"
+    language: "TypeScript"
+    database: "PostgreSQL + Redis"
+    orm: "Prisma"
+    api: "REST + GraphQL"
+    testing: "Jest"
+    deployment: "AWS / DigitalOcean"
+
+  devops:
+    vcs: "Git + GitHub"
+    ci_cd: "GitHub Actions"
+    container: "Docker"
+    monitoring: "Datadog / Sentry"
+    cdn: "Cloudflare"
+
+# Processos da squad
+processes:
+  daily_standup:
+    frequency: "09:30 AM (15 min)"
+    attendees: "Toda squad"
+    facilitated_by: "@sm"
+
+  sprint_planning:
+    frequency: "Início de sprint (2h)"
+    attendees: "Toda squad"
+    orchestrated_by: "@pm + @po"
+
+  code_review:
+    max_turnaround: "4 horas"
+    minimum_reviewers: 2
+    assisted_by: "@dev + @architect"
+
+  sprint_review:
+    frequency: "Fim de sprint (1.5h)"
+    attendees: "Squad + Cliente"
+    facilitated_by: "@sm"
+
+  retrospective:
+    frequency: "Após sprint review (1h)"
+    attendees: "Toda squad"
+    facilitated_by: "@sm"
+
+# KPIs que agentes monitoram
+kpis:
+  quality:
+    - metric: "Code coverage"
+      target: "> 80%"
+      monitored_by: "@qa + @dev"
+    - metric: "Bug escape rate"
+      target: "< 5%"
+      monitored_by: "@qa"
+    - metric: "Code review turnaround"
+      target: "< 4h"
+      monitored_by: "@architect"
+
+  performance:
+    - metric: "Lighthouse score"
+      target: "> 90"
+      monitored_by: "@dev + @architect"
+    - metric: "API latency (p95)"
+      target: "< 200ms"
+      monitored_by: "@dev"
+    - metric: "Uptime"
+      target: "99.95%"
+      monitored_by: "@devops"
+
+  delivery:
+    - metric: "Sprint velocity"
+      target: "Consistente"
+      monitored_by: "@pm"
+    - metric: "On-time delivery"
+      target: "100%"
+      monitored_by: "@pm + @po"
+
+# Integração com documentação da squad
+documentation:
+  squad_design: "docs/squad-design/web-development-squad.md"
+  raci_matrix: "docs/squad-design/raci-matrix.md"
+  onboarding: "docs/squad-design/onboarding-guide.md"
+  handbook: "docs/squad-design/team-handbook.md"
+  aios_integration: "docs/squad-design/aios-integration.md"
+  executive_summary: "docs/squad-design/executive-summary.md"
+
+# Comandos rápidos para cada rol
+quick_commands:
+  tech_lead:
+    - "@architect *design-system"
+    - "@architect *tech-decision"
+    - "@dev *code-review"
+    - "@pm *sprint-status"
+
+  senior_frontend:
+    - "@dev *create-feature"
+    - "@dev *optimize-performance"
+    - "@qa *generate-tests"
+    - "@architect *design-pattern"
+
+  mid_frontend:
+    - "@dev *create-feature"
+    - "@dev *fix-bug"
+    - "@dev *explain-code"
+    - "@dev *write-tests"
+
+  senior_backend:
+    - "@dev *design-api"
+    - "@dev *optimize-query"
+    - "@architect *database-design"
+    - "@dev *security-review"
+
+  mid_backend:
+    - "@dev *generate-endpoint"
+    - "@dev *fix-bug"
+    - "@data-engineer *optimize-query"
+    - "@dev *write-tests"
+
+  qa_engineer:
+    - "@qa *create-test-plan"
+    - "@qa *generate-tests"
+    - "@dev *generate-tests"
+    - "@qa *quality-report"
+
+  designer:
+    - "@ux-design-expert *design-component"
+    - "@ux-design-expert *accessibility-audit"
+    - "@ux-design-expert *design-system"
+
+  devops_engineer:
+    - "@devops *setup-cicd"
+    - "@devops *deploy-setup"
+    - "@devops *monitoring-setup"
+    - "@devops *security-audit"
+
+# Configurações de produtividade
+productivity:
+  baseline_velocity: "6-8 features por sprint"
+  with_agents: "40-50% mais rápido"
+  estimated_equivalent_fte: "4 pessoas extras"
+  ramp_up_weeks: 4
+  full_productivity_weeks: 12
+
+# Versão e metadata
+metadata:
+  version: "1.0.0"
+  created_at: "2026-02-04"
+  last_updated: "2026-02-04"
+  maintained_by: "Tech Lead + @aios-master"
+  next_review: "2026-03-04"
+  status: "Active"
+  squad_id: "web-dev-squad-001"
