@@ -32,6 +32,7 @@ Display all AIOS agents currently available in this project.
 | QA | `/qa` | Test planning, test cases, bug reporting, quality |
 | UX Design Expert | `/ux-design-expert` | UX research, wireframing, design systems |
 | Squad Creator | `/squad-creator` | Composição de times, roles, skills assessment |
+| Content Distillery | `/content-distillery` | YouTube distillation, framework extraction, content derivation |
 
 ## 🛠️ AIOS CLI Commands
 
@@ -45,11 +46,11 @@ Display all AIOS agents currently available in this project.
 | `/aios-info` | Informações do sistema |
 | `/aios-version` | Versão instalada |
 
-## 📊 Total de Agents Disponíveis: 12
+## 📊 Total de Agents Disponíveis: 13
 
 - ✅ 3 Core Agents
 - ✅ 3 Product & Delivery Agents
-- ✅ 6 Specialized Agents
+- ✅ 7 Specialized Agents
 
 ## 🚀 Como Usar
 

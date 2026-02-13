@@ -89,6 +89,13 @@ Use qualquer um dos comandos abaixo para invocar o agent correspondente:
 - Definição de roles
 - Skills assessment
 
+#### `/content-distillery`
+**Content Distillery - Content Extraction & Repurposing Specialist**
+- Transform YouTube livestreams into frameworks and 60+ content pieces
+- Extract tacit knowledge and mental models
+- Multi-platform content derivation
+- 9-agent orchestrated pipeline with quality gates
+
 ## Como Usar
 
 Simplesmente digite o comando do agent desejado no Claude Code:
