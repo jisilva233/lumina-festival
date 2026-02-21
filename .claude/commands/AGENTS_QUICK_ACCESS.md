@@ -68,6 +68,18 @@ description: "Quick access guide to all AIOS agents"
 
 ---
 
+## 🧠 Squad Agents (Squads Instalados)
+
+### `/zona-genialidade` - 🧠 Zona Genialidade Chief
+**Assessment comportamental, genius zone mapping, squad recommendation, monetization**
+- Quick Commands: `*start`, `*assess`, `*blueprint`, `*recommend-squad`
+
+### `/content-distillery` - 🏭 Distillery Chief
+**YouTube livestream extraction, frameworks, 60+ content pieces**
+- Quick Commands: `*distill`, `*extract`, `*derive`, `*gate`
+
+---
+
 ## 📝 How to Use
 
 ### Option 1: Type the shortcut (Fastest! ⚡)
@@ -110,6 +122,10 @@ Shows all available commands for the active agent.
 ### People & Organization
 - `/squad-creator` → Team composition, roles
 - `/aios-master` → Overall coordination
+
+### Squad Agents (Installed Squads)
+- `/zona-genialidade` → Genius zone assessment, squad recommendation
+- `/content-distillery` → YouTube extraction, content derivation
 
 ---
 

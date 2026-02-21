@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genius Zone Blueprint</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            background: white;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+        }
+
+        /* HEADER */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #6366f1;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            color: #6366f1;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .header p {
+            font-size: 0.95em;
+            color: #7f8c8d;
+        }
+
+        /* PROFILE CARD */
+        .profile-card {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .profile-card h2 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            opacity: 0.95;
+        }
+
+        .profile-card p {
+            font-size: 1em;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* SECTIONS */
+        section {
+            margin-bottom: 50px;
+            page-break-inside: avoid;
+        }
+
+        section h2 {
+            font-size: 1.8em;
+            color: #6366f1;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e7ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        section h3 {
+            font-size: 1.2em;
+            color: #4f46e5;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* CONTENT */
+        .content-box {
+            background: #f8f9fa;
+            padding: 20px;
+            border-left: 4px solid #6366f1;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        .content-box strong {
+            color: #4f46e5;
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+
+        .highlight {
+            background: #fef3c7;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+
+        .score {
+            display: inline-block;
+            background: #6366f1;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 0 5px;
+        }
+
+        /* TABLES */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        thead {
+            background: #6366f1;
+            color: white;
+        }
+
+        th {
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e7ff;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        /* TIMELINE */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #6366f1;
+        }
+
+        .timeline-item {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -37px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #6366f1;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #6366f1;
+        }
+
+        .timeline-item h4 {
+            color: #4f46e5;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            background: #f0fdf4;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        .checklist ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .checklist li::before {
+            content: '☑';
+            color: #10b981;
+            font-size: 1.3em;
+            margin-right: 12px;
+            font-weight: bold;
+        }
+
+        /* STATS BOX */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .stat-box {
+            background: #f0f9ff;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid #0ea5e9;
+        }
+
+        .stat-box strong {
+            display: block;
+            color: #0ea5e9;
+            font-size: 1.3em;
+            margin-bottom: 5px;
+        }
+
+        .stat-box span {
+            color: #64748b;
+            font-size: 0.9em;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #e0e7ff;
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-top: 50px;
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 40px;
+            }
+            section {
+                page-break-inside: avoid;
+            }
+            table {
+                page-break-inside: avoid;
+            }
+        }
+
+        .icon {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <h1><span class="icon">🧠</span> Genius Zone Blueprint</h1>
+            <p>Seu mapa de genialidade, squad ideal e monetização</p>
+        </div>
+
+        <!-- PROFILE CARD -->
+        <div class="profile-card">
+            <h2>Seu Perfil em 30 Segundos</h2>
+            <p>Você é um <strong>Executor-Simplificador</strong> que naturalmente transforma coisas complexas em soluções práticas. Tem confiança absoluta no seu valor, aprende fazendo, e se diferencia por <strong>consistência e credibilidade</strong>. Está atualmente na <strong>Zona de Excelência</strong> (faz bem, mas não ama plenamente) usando IA para resolver problemas pontuais. Sua genialidade emerge quando você combina três forças: expertise em IA + habilidade de simplificar + paixão genuína de impactar pequenos empreendedores. <strong>O mercado paga caro por isso.</strong></p>
+        </div>
+
+        <!-- SECTION 1 -->
+        <section>
+            <h2><span class="icon">⚡</span> 1. Sua Zona de Genialidade</h2>
+            <p style="font-size: 0.95em; color: #666; margin-bottom: 15px;"><em>Framework: Gay Hendricks</em></p>
+
+            <div class="content-box">
+                <strong>Zona Atual:</strong> Excelência → Transição para Genialidade<br>
+                <strong>Zona Alvo:</strong> Genialidade Plena
+            </div>
+
+            <h3>O que encontramos:</h3>
+            <ul>
+                <li>Você faz <strong>BEM</strong> (usar IA, resolver problemas) = Excelência</li>
+                <li>Você faz <strong>SEM ESFORÇO</strong> (simplificar complexidade) = Genialidade latente</li>
+                <li>Você <strong>não ama plenamente</strong> porque falta direção = por isso está em Excelência</li>
+            </ul>
+
+            <h3>Sua Superpotência:</h3>
+            <div class="content-box">
+                Transformar ferramentas de IA complexas em soluções simples e personalizadas que pequenos empreendedores conseguem implementar e que geram impacto real (qualidade de vida + dinheiro).
+            </div>
+
+            <h3>Barreiras:</h3>
+            <ul>
+                <li><strong>Upper Limit Problem:</strong> Não identificado ✓ (você não sabota sucesso)</li>
+                <li><strong>Barreira dominante:</strong> Falta de clareza de cliente ideal e transformação específica</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 2 -->
+        <section>
+            <h2><span class="icon">💪</span> 2. Seus Top 5 Talentos</h2>
+            <p style="font-size: 0.95em; color: #666; margin-bottom: 15px;"><em>Framework: Don Clifton / CliftonStrengths</em></p>
+
+            <div class="content-box">
+                <strong>Domínio Dominante:</strong> Execução (você faz coisas acontecerem)
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Talento</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>Execução</strong></td>
+                        <td>Organiza planos, executa, completa. Não é idealizador solto.</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>Pensamento Estratégico</strong></td>
+                        <td>Analítico, enxerga padrões em sistemas complexos (IA, processos).</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>Aprendizado</strong></td>
+                        <td>Aprende fazendo, não teoricamente. Prático.</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>Responsabilidade</strong></td>
+                        <td>Quando pega tarefa, termina com qualidade.</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><strong>Foco</strong></td>
+                        <td>Quando empolga, você voa. Concentração total.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECTION 3 -->
+        <section>
+            <h2><span class="icon">🎯</span> 3. Sua Habilidade Única</h2>
+            <p style="font-size: 0.95em; color: #666; margin-bottom: 15px;"><em>Framework: Dan Sullivan / Unique Ability</em></p>
+
+            <div class="content-box" style="border-left-color: #8b5cf6;">
+                <strong style="color: #8b5cf6; font-size: 1.1em;">Unique Ability Statement:</strong><br><br>
+                "Eu sou insubstituível na capacidade de pegar ferramentas complexas de IA e transformá-las em soluções simples, prontas para usar, que empreendedores conseguem implementar e que realmente funcionam."
+            </div>
+
+            <h3>Distribuição de Tempo:</h3>
+            <div class="stats">
+                <div class="stat-box" style="border-left-color: #10b981;">
+                    <strong>20%</strong>
+                    <span>Unique Ability (quando usa IA)</span>
+                </div>
+                <div class="stat-box" style="border-left-color: #f59e0b;">
+                    <strong>60%</strong>
+                    <span>Excelência (faz bem, não ama)</span>
+                </div>
+                <div class="stat-box" style="border-left-color: #ef4444;">
+                    <strong>20%</strong>
+                    <span>Competência (atividades ok)</span>
+                </div>
+            </div>
+
+            <h3>Atividades para DELEGAR:</h3>
+            <ul>
+                <li>Coisas que drenam energia</li>
+                <li>Tarefas burocráticas</li>
+                <li>Negociação/prospecção</li>
+            </ul>
+
+            <h3>Atividades para ELIMINAR:</h3>
+            <ul>
+                <li>Explicar conceitos abstratos de IA (seu diferencial é SIMPLIFICAR)</li>
+                <li>Ficar em "research mode" infinito</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 4 -->
+        <section>
+            <h2><span class="icon">💰</span> 4. Seu Perfil de Riqueza</h2>
+            <p style="font-size: 0.95em; color: #666; margin-bottom: 15px;"><em>Framework: Roger Hamilton / Wealth Dynamics</em></p>
+
+            <div class="content-box" style="border-left-color: #ec4899;">
+                <strong style="color: #ec4899;">Perfil Primário:</strong> MECHANIC<br>
+                <strong style="color: #ec4899;">Perfil Secundário:</strong> CREATOR
+            </div>
+
+            <h3>Como você gera valor:</h3>
+            <ul>
+                <li>✓ Você <strong>otimiza</strong> (torna melhor o que existe)</li>
+                <li>✓ Você <strong>simplifica</strong> (tira complexidade)</li>
+                <li>✓ Você <strong>completa</strong> (termina o trabalho)</li>
+                <li>✓ Você <strong>constrói sistemas</strong> (não ideias soltas)</li>
+            </ul>
+
+            <h3>Sua Armadilha:</h3>
+            <p>Ficar otimizando infinitamente sem lançar. Mas você tem DNA de CREATOR também — isso é seu "dual profile". <strong>Mecânico que cria = combinação poderosa.</strong></p>
+
+            <h3>Papéis Complementares para Squad:</h3>
+            <ul>
+                <li><span class="highlight">Star</span> — para marketing, visibilidade</li>
+                <li><span class="highlight">Deal Maker</span> — para fechar contratos</li>
+                <li><span class="highlight">Supporter</span> — para suporte/onboarding</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 5 -->
+        <section>
+            <h2><span class="icon">📊</span> 5. Sua Equação de Valor</h2>
+            <p style="font-size: 0.95em; color: #666; margin-bottom: 15px;"><em>Framework: Alex Hormozi / Value Equation</em></p>
+
+            <h3>Dream Outcome (Cliente Ideal):</h3>
+            <div class="content-box">
+                "Eu quero ganhar mais dinheiro e ter melhor qualidade de vida usando tecnologia, sem ter que virar técnico de IA."
+            </div>
+
+            <div class="stats">
+                <div class="stat-box">
+                    <strong>8/10</strong>
+                    <span>Perceived Likelihood (Credibilidade)</span>
+                </div>
+                <div class="stat-box">
+                    <strong>9/10</strong>
+                    <span>Time Delay (Resultado rápido)</span>
+                </div>
+                <div class="stat-box">
+                    <strong>8/10</strong>
+                    <span>Effort & Sacrifice (Fácil implementar)</span>
+                </div>
+                <div class="stat-box" style="border-left-color: #10b981;">
+                    <strong><span class="score">8.3/10</span></strong>
+                    <span>Value Score = EXCELENTE</span>
+                </div>
+            </div>
+
+            <h3>Grand Slam Offer (Rascunho):</h3>
+            <div class="content-box" style="border-left-color: #10b981;">
+                <strong style="color: #10b981;">"Transformação de 90 dias:</strong> Pequenos empreendedores que querem usar IA para escalar ganham [resultado específico] em [tempo específico] sem ter que aprender programação."
+            </div>
+        </section>
+
+        <!-- SECTION 6 -->
+        <section>
+            <h2><span class="icon">⚙️</span> 6. Seu Estilo de Ação</h2>
+            <p style="font-size: 0.95em; color: #666; margin-bottom: 15px;"><em>Framework: Kathy Kolbe / 4 Action Modes</em></p>
+
+            <h3>Seu Kolbe Profile:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Action Mode</th>
+                        <th>Score</th>
+                        <th>Descrição</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Fact Finder</strong></td>
+                        <td><span class="score" style="background: #0ea5e9;">6/10</span></td>
+                        <td>Pesquisa antes de agir (moderado)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Follow Thru</strong></td>
+                        <td><span class="score" style="background: #8b5cf6;">7/10</span></td>
+                        <td>Planeja e cronogramas (estruturado)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Quick Start</strong></td>
+                        <td><span class="score" style="background: #ec4899;">6/10</span></td>
+                        <td>Não impulsivo, age quando empolga</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Implementor</strong></td>
+                        <td><span class="score" style="background: #10b981;">7/10</span></td>
+                        <td>Trabalha com sistemas (alto)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="content-box">
+                <strong>Modo Dominante:</strong> Follow Thru + Implementor<br>
+                = <strong>"Executor Estruturado"</strong>
+            </div>
+
+            <h3>Seu Processo de Ação:</h3>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>1. Pesquisa</h4>
+                    <p>Um pouco (não infinito)</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>2. Planejamento</h4>
+                    <p>Monta plano e cronograma</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>3. Execução</h4>
+                    <p>Executa estruturadamente</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>4. Refinamento</h4>
+                    <p>Ajusta no caminho (não é rígido)</p>
+                </div>
+            </div>
+
+            <h3>Ambiente Ideal de Trabalho:</h3>
+            <ul>
+                <li>Metas claras + liberdade de método</li>
+                <li>Autonomia para executar</li>
+                <li>Tempo focado (sem interrupções)</li>
+                <li>Feedback sobre qualidade/resultado</li>
+            </ul>
+        </section>
+
+        <!-- SECTION 7 -->
+        <section>
+            <h2><span class="icon">✨</span> 7. Seu Diferencial Percebido</h2>
+            <p style="font-size: 0.95em; color: #666; margin-bottom: 15px;"><em>Framework: Sally Hogshead / Fascination Advantage</em></p>
+
+            <div class="content-box" style="border-left-color: #06b6d4;">
+                <strong style="color: #06b6d4;">Advantage Primária:</strong> TRUST<br>
+                <strong style="color: #06b6d4;">Advantage Dormante:</strong> INNOVATION
+            </div>
+
+            <h3>Como o mundo te vê:</h3>
+            <ul>
+                <li>✓ Confiável</li>
+                <li>✓ Consistente</li>
+                <li>✓ Competente</li>
+                <li>✓ "O cara que faz as coisas funcionarem"</li>
+                <li>✓ Behind-the-scenes operator</li>
+            </ul>
+
+            <h3>Sua Superpotência Dormante:</h3>
+            <p>Você tem capacidade de <strong>inovar</strong> (quer criar plataforma), mas escolhe ficar nos bastidores. <strong>Combine os dois:</strong> Inovador confiável = pessoa rara e valiosa.</p>
+        </section>
+
+        <!-- SECTION 8 -->
+        <section>
+            <h2><span class="icon">🗺️</span> 8. Mapa de Convergências</h2>
+
+            <h3>Onde 3+ frameworks concordam (SUAS FORÇAS CONFIRMADAS):</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Insight</th>
+                        <th>Frameworks</th>
+                        <th>Força</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Você é executor prático</td>
+                        <td>Clifton, Sullivan, Kolbe, Hamilton</td>
+                        <td><span class="highlight" style="background: #10b981; color: white;">ALTA</span></td>
+                    </tr>
+                    <tr>
+                        <td>Você simplifica coisas complexas</td>
+                        <td>Hormozi, Hendricks, Sullivan, Hogshead</td>
+                        <td><span class="highlight" style="background: #10b981; color: white;">ALTA</span></td>
+                    </tr>
+                    <tr>
+                        <td>Você é confiável e consistente</td>
+                        <td>Hogshead, Clifton, Sullivan, Hamilton</td>
+                        <td><span class="highlight" style="background: #10b981; color: white;">ALTA</span></td>
+                    </tr>
+                    <tr>
+                        <td>Você aprende fazendo</td>
+                        <td>Kolbe, Clifton, Sullivan</td>
+                        <td><span class="highlight" style="background: #10b981; color: white;">ALTA</span></td>
+                    </tr>
+                    <tr>
+                        <td>Você entra em flow quando empolga</td>
+                        <td>Hendricks, Clifton, Kolbe</td>
+                        <td><span class="highlight" style="background: #10b981; color: white;">ALTA</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Tensões Produtivas (NÃO são fraquezas, são dinâmicas):</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tensão</th>
+                        <th>Interpretação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Quer otimizar vs quer criar do zero</td>
+                        <td>Você pode fazer os dois: comece com serviço (otimizando IA), evolua para plataforma</td>
+                    </tr>
+                    <tr>
+                        <td>Serviço customizado vs plataforma escalável</td>
+                        <td>Caminho: Agência de IA → Plataforma de IA (ganhe exp + cash flow + validação)</td>
+                    </tr>
+                    <tr>
+                        <td>Especialista vs inovador</td>
+                        <td>Você é AMBOS. Inovador confiável = raro. Aproveite.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- SECTION 9 -->
+        <section>
+            <h2><span class="icon">👥</span> 9. Seu Squad Ideal</h2>
+
+            <div class="content-box" style="border-left-color: #f59e0b;">
+                <strong style="color: #f59e0b;">Tipo de Squad:</strong> Agência de Soluções de IA para Pequenos Empreendedores<br>
+                <em>(que pode evoluir para Plataforma)</em>
+            </div>
+
+            <h3>Seu Papel: CTO/Executor-Chefe</h3>
+            <p>Você lidera execução técnica e garante qualidade.</p>
+
+            <h3>Papéis Complementares Necessários:</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Papel</th>
+                        <th>Responsabilidade</th>
+                        <th>Perfil Ideal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>CEO/Visionaire</strong></td>
+                        <td>Vende visão, conquista clientes, cara da marca</td>
+                        <td>Creator/Star + Comunicador</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Sales/Deal Maker</strong></td>
+                        <td>Fecha contratos, negocia, leva clientes</td>
+                        <td>Deal Maker/Trader + Persuasor</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Customer Success</strong></td>
+                        <td>Onboarding, suporte, retention</td>
+                        <td>Supporter + Empatia alta</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Você não precisa fazer:</h3>
+            <p>Marketing, vendas, suporte. Você foca no que faz melhor: <strong>criar e entregar soluções de qualidade.</strong></p>
+        </section>
+
+        <!-- SECTION 10 -->
+        <section>
+            <h2><span class="icon">📈</span> 10. Plano de Monetização (90 Dias)</h2>
+
+            <h3>Fase 1: VALIDAÇÃO (Dias 1-30)</h3>
+            <p><strong>Objetivo:</strong> Ganhar primeiros R$5K-10K e validar transformação</p>
+
+            <div class="checklist">
+                <ul>
+                    <li>Escolher 1 nicho de pequeno empreendedor (e-commerce, consultores, agências, coaches)</li>
+                    <li>Mapear 3 problemas principais que IA resolve para esse nicho</li>
+                    <li>Criar "solução rápida" para 1 desses problemas</li>
+                    <li>Fechar 3-5 clientes pagantes (R$500-2K cada)</li>
+                    <li>Documentar exatamente qual transformação você entrega</li>
+                    <li>Coletar depoimentos/resultados</li>
+                </ul>
+            </div>
+            <p style="text-align: center; margin-top: 15px;"><strong>Meta: R$5K-10K em receita + Prova de conceito</strong></p>
+
+            <h3>Fase 2: CONSTRUÇÃO (Dias 31-60)</h3>
+            <p><strong>Objetivo:</strong> Estruturar serviço e começar a escalar</p>
+
+            <div class="checklist">
+                <ul>
+                    <li>Criar "Menu de Soluções de IA" (3-5 ofertas principais)</li>
+                    <li>Documentar seu processo de entrega</li>
+                    <li>Treinar 1 pessoa para ajudar na execução</li>
+                    <li>Automatizar partes do seu processo (use IA pra facilitar seu trabalho)</li>
+                    <li>Fechar 5-10 clientes novos</li>
+                    <li>Iniciar conversa com potencial CEO/co-founder</li>
+                </ul>
+            </div>
+            <p style="text-align: center; margin-top: 15px;"><strong>Meta: R$10K-20K em receita + Processo documentado + Começar escala</strong></p>
+
+            <h3>Fase 3: ESCALA (Dias 61-90)</h3>
+            <p><strong>Objetivo:</strong> Estruturar squad e preparar crescimento 10x</p>
+
+            <div class="checklist">
+                <ul>
+                    <li>Formalizar parceria CEO/Sales (ou contratar)</li>
+                    <li>Menu de ofertas com preços claramente definidos</li>
+                    <li>Pipeline de clientes prospectados (inbound ou outbound)</li>
+                    <li>Sistema de delivery estruturado (você não é gargalo)</li>
+                    <li>Desenhar versão "escalada" (plataforma? memberships? curso?)</li>
+                    <li>Fechar 10-15 clientes novos</li>
+                </ul>
+            </div>
+            <p style="text-align: center; margin-top: 15px;"><strong>Meta: R$20K-30K em receita + Squad base + Roadmap plataforma</strong></p>
+        </section>
+
+        <!-- SECTION 11 -->
+        <section>
+            <h2><span class="icon">🎯</span> 11. Próximos Passos Imediatos</h2>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>Hoje</h4>
+                    <p>Responda: <strong>Qual nicho de pequeno empreendedor você quer servir primeiro?</strong><br>
+                    (E-commerce, consultores, agências, coaches, outros?)</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Esta Semana</h4>
+                    <p>Mapeie <strong>3 problemas principais que IA resolve</strong> para ESSE nicho específico</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Próxima Semana</h4>
+                    <p>Crie <strong>1 solução simples</strong> (pode ser MVP) e teste com 1-2 pessoas</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Este Mês</h4>
+                    <p>Feche seus <strong>3 primeiros clientes pagantes</strong></p>
+                </div>
+                <div class="timeline-item">
+                    <h4>Até o Próximo Cohort</h4>
+                    <p>Documente a transformação e comece a estruturar o squad</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 12 -->
+        <section>
+            <h2><span class="icon">✅</span> 12. Resumo Final</h2>
+
+            <h3>✓ Você TEM:</h3>
+            <ul>
+                <li>✓ Habilidade (IA + simplificação)</li>
+                <li>✓ Confiança no seu valor</li>
+                <li>✓ Energia quando empolga</li>
+                <li>✓ Foco em resultado</li>
+                <li>✓ Paixão genuína em ajudar</li>
+            </ul>
+
+            <h3>✗ O que FALTAVA:</h3>
+            <ul>
+                <li>✗ DIREÇÃO (para quem? qual transformação?)</li>
+                <li>✗ ESTRUTURA (como monetizar?)</li>
+                <li>✗ SQUAD (quem ajuda?)</li>
+            </ul>
+
+            <h3>✓ Agora você TEM:</h3>
+            <ul>
+                <li>✓ <strong>Cliente ideal:</strong> Pequenos empreendedores</li>
+                <li>✓ <strong>Transformação:</strong> Melhor qualidade de vida + dinheiro via IA</li>
+                <li>✓ <strong>Squad recomendado:</strong> Você (executor) + CEO (visão) + Sales + Support</li>
+                <li>✓ <strong>Plano 90 dias:</strong> Validação → Construção → Escala</li>
+            </ul>
+
+            <div class="content-box" style="margin-top: 30px; border-left-color: #10b981;">
+                <strong style="color: #10b981; font-size: 1.1em;">Sua Zona de Genialidade:</strong><br><br>
+                <em>"Ser o executor-simplificador que transforma ferramentas complexas de IA em soluções práticas que pequenos empreendedores usam para ganhar dinheiro e qualidade de vida."</em>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <p><strong>Blueprint gerado pelo Squad Zona de Genialidade v1.0</strong></p>
+            <p>7 frameworks integrados: Hendricks + Clifton + Sullivan + Hamilton + Hormozi + Kolbe + Hogshead</p>
+            <p style="margin-top: 20px; color: #999;">Para converter para PDF: Ctrl+P (ou ⌘P) → "Salvar como PDF"</p>
+        </div>
+    </div>
+</body>
+</html>

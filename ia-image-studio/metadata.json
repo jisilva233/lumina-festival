@@ -1,0 +1,7 @@
+{
+  "name": "AI Image Studio",
+  "description": "A professional AI image generation and editing studio. Describe your idea to create stunning visuals, or upload an image to edit with powerful AI tools. Powered by Gemini.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

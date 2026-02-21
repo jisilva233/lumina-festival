@@ -1,0 +1,8 @@
+{
+  "name": "Provador Virtual IA",
+  "description": "Experimente roupas virtualmente! Faça o upload de uma foto sua e de uma peça de roupa para ver como ficaria em uma imagem fotorrealista gerada por IA.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}

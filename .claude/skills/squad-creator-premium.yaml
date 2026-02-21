@@ -1,0 +1,66 @@
+---
+# Squad Creator Premium v3.0.0 - Skill Registration
+# Registered: 2026-02-21
+
+name: squad-creator-premium
+displayName: "🎨 Squad Creator Premium"
+description: |
+  Master orchestrator for squad creation. Creates teams of AI agents specialized
+  in any domain using elite minds. Clone minds, extract DNA, build squads.
+
+triggers:
+  - "create squad"
+  - "create team"
+  - "want a squad"
+  - "need experts in"
+  - "squad de"
+  - "time de"
+  - "quero um squad"
+  - "especialistas em"
+
+source:
+  path: "./squads/squad-creator-premium/skills/squad.md"
+  type: markdown
+
+commands:
+  - "*create-squad {domain}" - Create complete squad from scratch
+  - "*clone-mind {name}" - Clone single mind into agent
+  - "*create-agent" - Create agent from DNA
+  - "*validate-squad" - Run quality validation
+  - "*resume" - Continue interrupted workflow
+  - "*status" - Show current state
+  - "*help" - Show all commands
+
+subagents:
+  oalanicolas:
+    name: "Alan Nicolas - Knowledge Architect"
+    description: "Mind cloning specialist, DNA extraction expert"
+
+  pedro-valerio:
+    name: "Pedro Valerio - Process Designer"
+    description: "Workflow validation, process audit expert"
+
+metadata:
+  version: "3.0.0"
+  author: "AIOS Team"
+  updated: "2026-02-10"
+  testStatus: "4/4 PASS"
+  icon: "🎨"
+  language: "portuguese"
+
+permissions:
+  tools:
+    - Read
+    - Grep
+    - Glob
+    - Task
+    - Write
+    - Edit
+    - Bash
+    - WebSearch
+    - WebFetch
+  mode: "acceptEdits"
+
+memory:
+  scope: "project"
+  location: ".claude/agent-memory/squad/"

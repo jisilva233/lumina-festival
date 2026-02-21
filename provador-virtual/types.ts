@@ -1,0 +1,8 @@
+export enum AppStatus {
+  IDLE = 'IDLE',
+  SUGGESTING = 'SUGGESTING',
+  GENERATING = 'GENERATING',
+  UPSCALING = 'UPSCALING',
+  SUCCESS = 'SUCCESS',
+  ERROR = 'ERROR',
+}

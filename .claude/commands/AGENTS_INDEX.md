@@ -96,6 +96,14 @@ Use qualquer um dos comandos abaixo para invocar o agent correspondente:
 - Multi-platform content derivation
 - 9-agent orchestrated pipeline with quality gates
 
+#### `/zona-genialidade`
+**Zona Genialidade - Behavioral Assessment & Genius Zone Mapping Specialist**
+- Assessment comportamental unificado (7 frameworks em 30 min)
+- Mapeamento de Zona de Genialidade
+- Recomendação de squad ideal baseado em perfil
+- Plano de monetização concreto
+- 8-agent squad com quality gates
+
 ## Como Usar
 
 Simplesmente digite o comando do agent desejado no Claude Code:
